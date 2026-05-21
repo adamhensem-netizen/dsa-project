@@ -285,4 +285,3 @@ void generateReport()
     printf("\nTotal Revenue: RM%.2f\n",
            totalRevenue);
 }
-//adam tak hensem
