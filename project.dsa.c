@@ -147,7 +147,7 @@ void displayDeals()
             printf("Voucher: No\n");
     }
 }
-
+//alep gemok
 
 void searchDeal()
 {
