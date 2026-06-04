@@ -70,7 +70,7 @@ void displayAllBookings() {
 
 
 /* ============================================================
-   [NAMA]
+   [DIN]
    SEARCH & SORT
    Functions : searchPackage(), searchBooking(),
                sortPackageByPrice(), sortBookingByDate()
