@@ -45,12 +45,111 @@ int         bookingCount = 0;
    Functions : addPackage(), addBooking()
    ============================================================ */
 
-void addPackage() {
-    /* code */
+void addPackage()
+{
+    if (packageCount >= MAX_PACKAGES)
+    {
+        printf("\nPackage list is full!\n");
+        return;
+    }
+
+    printf("\n===== ADD PACKAGE =====\n");
+
+    printf("Package ID: ");
+    scanf("%s", packageList[packageCount].packageID);
+
+    getchar();
+
+    printf("Package Name: ");
+    fgets(packageList[packageCount].packageName, NAME_LEN, stdin);
+    packageList[packageCount].packageName[
+        strcspn(packageList[packageCount].packageName, "\n")
+    ] = '\0';
+
+    printf("Location: ");
+    fgets(packageList[packageCount].location, NAME_LEN, stdin);
+    packageList[packageCount].location[
+        strcspn(packageList[packageCount].location, "\n")
+    ] = '\0';
+
+    printf("Duration (Nights): ");
+    scanf("%d", &packageList[packageCount].durationNights);
+
+    printf("Price Per Night: ");
+    scanf("%f", &packageList[packageCount].pricePerNight);
+
+    printf("Maximum Guests: ");
+    scanf("%d", &packageList[packageCount].maxGuests);
+
+    packageCount++;
+
+    printf("\nPackage added successfully!\n");
 }
 
-void addBooking() {
-    /* code*/
+void addBooking()
+{
+    BookingNode *newBooking;
+
+    newBooking = (BookingNode*)malloc(sizeof(BookingNode));
+
+    if (newBooking == NULL)
+    {
+        printf("Memory allocation failed!\n");
+        return;
+    }
+
+    printf("\n===== ADD BOOKING =====\n");
+
+    printf("Booking ID: ");
+    scanf("%s", newBooking->bookingID);
+
+    getchar();
+
+    printf("Customer Name: ");
+    fgets(newBooking->customerName, NAME_LEN, stdin);
+    newBooking->customerName[
+        strcspn(newBooking->customerName, "\n")
+    ] = '\0';
+
+    printf("Contact Number: ");
+    fgets(newBooking->contactNo, CONTACT_LEN, stdin);
+    newBooking->contactNo[
+        strcspn(newBooking->contactNo, "\n")
+    ] = '\0';
+
+    printf("Package ID: ");
+    scanf("%s", newBooking->packageID);
+
+    printf("Check-in Date (DD/MM/YYYY): ");
+    scanf("%s", newBooking->checkInDate);
+
+    printf("Number of Guests: ");
+    scanf("%d", &newBooking->numGuests);
+
+    printf("Total Price: ");
+    scanf("%f", &newBooking->totalPrice);
+
+    newBooking->next = NULL;
+
+    if (bookingHead == NULL)
+    {
+        bookingHead = newBooking;
+    }
+    else
+    {
+        BookingNode *current = bookingHead;
+
+        while (current->next != NULL)
+        {
+            current = current->next;
+        }
+
+        current->next = newBooking;
+    }
+
+    bookingCount++;
+
+    printf("\nBooking added successfully!\n");
 }
 
 
