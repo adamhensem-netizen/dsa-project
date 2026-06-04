@@ -94,7 +94,7 @@ void sortBookingByDate() {
 
 
 /* ============================================================
-   [NAMA]
+   [ALIP]
 	UPDATE & REMOVE
    Functions : updateBooking(), removeBooking()
    ============================================================ */
